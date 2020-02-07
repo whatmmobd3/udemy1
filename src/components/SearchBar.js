@@ -8,10 +8,15 @@ class SearchBar extends React.Component {
         event.preventDefault();
         this.props.onFormSubmit(this.state.term);
     }
+
+  
     render() {
         return (
             <div className='ui segment search-bar'>
-                <form className='ui form' onSubmit={this.submitForm}>
+                <form
+                    className='ui form'
+                    onSubmit={this.submitForm}
+                >
                     <label>First Name</label>
                     <input
                         type='text'

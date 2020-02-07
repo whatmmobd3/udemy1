@@ -4,7 +4,7 @@ const KEY = 'AIzaSyDSi2ZzNBkP8nfn_UBYzt8l1XVdJXXqjrc';
 
 export const baseParams = {
     part: "snippet",
-    maxResults: 10,
+    maxResults: 5,
     type: 'video',
     key: KEY
 };

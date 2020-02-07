@@ -1,9 +1,13 @@
 import React from 'react'
+import VideoItem from './VideoItem'
 
-const App = (props) => {
+const App = ({ videos,onSelected }) => {
+    const renderedList = videos.map((element,index) => {
+        return <VideoItem key={index} video={element} onSelected={onSelected} />
+    })
     return (
-        <div>
-            {props.videos.length === 0 ? 'No rows' : 'Have a ' + props.videos.length + ' rows'}
+        <div className="ui list relaxed divided">
+            {renderedList}
         </div>
     )
 }

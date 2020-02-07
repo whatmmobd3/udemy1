@@ -1,6 +1,5 @@
-import './VideoItem.css';
+import '../css/VideoItem.css'
 import React from 'react'
-
 
 const App = ({ video, onSelected }) => {
     return (

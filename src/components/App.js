@@ -8,7 +8,11 @@ import youtube, { baseParams } from '../apis/youtube'
 class App extends React.Component {
     state = {
         videos: [],
-        onSelected: null
+        onSelected: null,
+        obj: {
+            title: null,
+            id: null
+        }
     }
 
     componentDidMount() {
@@ -26,11 +30,46 @@ class App extends React.Component {
             videos: res.data.items,
             onSelected: res.data.items[0]
         })
+
+    }
+
+    changeSelect = event => {
+        let value = this.state.videos.find(obj => obj.id.videoId === event.target.value)
+        this.setState({
+            obj: {
+                ...this.state.obj,
+                title: value.snippet.title,
+                id: value.id.videoId,
+            }
+        })
+    }
+
+    btn = () => {
+        console.log(this.state.obj);
     }
 
     render() {
         return (
             <div className='ui container'>
+                <select
+                    className="ui dropdown"
+                    onChange={this.changeSelect}
+                >
+                    <option>Select</option>
+                    {this.state.videos.map(element =>
+                        <option
+                            key={element.id.videoId}
+                            value={element.id.videoId}
+                        >
+                            {element.snippet.title}
+                        </option>
+                    )}
+                </select>
+
+                <button className="ui button" onClick={this.btn} >
+                    Show
+                </button>
+
                 <SearchBar onFormSubmit={this.onTermSubmit} />
                 <div className='ui grid'>
                     <div className='ui row'>
